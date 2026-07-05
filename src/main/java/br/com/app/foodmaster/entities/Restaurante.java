@@ -38,7 +38,7 @@ public class Restaurante  implements Serializable {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "restauranteId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Cardapio> itensCardapio;
+    private List<Cardapio> cardapio;
 
     public Usuario getDono() {
         return dono;
@@ -84,11 +84,11 @@ public class Restaurante  implements Serializable {
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-    public List<Cardapio> getItensCardapio() {
-        return itensCardapio;
+    public List<Cardapio> getCardapio() {
+        return cardapio;
     }
 
-    public void setItensCardapio(List<Cardapio> itensCardapio) {
-        this.itensCardapio = itensCardapio;
+    public void setCardapio(List<Cardapio> cardapio) {
+        this.cardapio = cardapio;
     }
 }

@@ -32,9 +32,6 @@ public class Usuario implements Serializable {
     private String senha;
 
     @Column
-    private String nivelUsuario;
-
-    @Column
     private Date dataUltimaAlteracao;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -89,14 +86,6 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getNivelUsuario() {
-        return nivelUsuario;
-    }
-
-    public void setNivelUsuario(String nivelUsuario) {
-        this.nivelUsuario = nivelUsuario;
     }
 
     public Date getDataUltimaAlteracao() {

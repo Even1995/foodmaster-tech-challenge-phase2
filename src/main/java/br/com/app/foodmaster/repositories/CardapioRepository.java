@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface CardapioRepository extends JpaRepository<Cardapio, UUID> {
+
 }
