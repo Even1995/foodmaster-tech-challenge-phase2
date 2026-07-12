@@ -7,9 +7,11 @@ import br.com.app.foodmaster.entities.Endereco;
 import br.com.app.foodmaster.entities.Usuario;
 import br.com.app.foodmaster.exceptions.UsuarioNaoEncontradoException;
 import br.com.app.foodmaster.repositories.UsuarioRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
@@ -59,7 +61,7 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    public void deleteUsuario(UUID id) {
+    public void deletarUsuario(UUID id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
         usuarioRepository.delete(usuario);
