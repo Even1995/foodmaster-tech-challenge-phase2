@@ -1,0 +1,433 @@
+{
+  "info": {
+    "_postman_id": "d18ee6b2-4905-44b8-bd85-6d208b3841d9",
+    "name": "FoodMaster API",
+    "description": "Collection for testing FoodMaster API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15232579"
+  },
+  "item": [
+    {
+      "name": "Tipos de Usuário",
+      "item": [
+        {
+          "name": "Criar Tipo de Usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomeTipo\": \"Cliente\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/tipos-usuario",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "tipos-usuario"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obter Tipo de Usuário por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/tipos-usuario/{{tipoUsuarioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "tipos-usuario",
+                "{{tipoUsuarioId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Tipo de Usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{tipoUsuarioId}}\",\n  \"nomeTipo\": \"Cliente Premium\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/tipos-usuario",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "tipos-usuario"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar Tipo de Usuário",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/tipos-usuario/{{tipoUsuarioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "tipos-usuario",
+                "{{tipoUsuarioId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuários",
+      "item": [
+        {
+          "name": "Criar Usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@example.com\",\n  \"login\": \"joaosilva\",\n  \"senha\": \"senha123\",\n  \"tipoUsuario\": {\n    \"id\": \"{{tipoUsuarioId}}\"\n  },\n  \"enderecoDto\": {\n    \"rua\": \"Rua Principal\",\n    \"numero\": \"123\",\n    \"cidade\": \"São Paulo\",\n    \"estado\": \"SP\",\n    \"cep\": \"01234-567\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obter Usuário por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/usuarios/{{usuarioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuarios",
+                "{{usuarioId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{usuarioId}}\",\n  \"nome\": \"João Silva Updated\",\n  \"email\": \"joao.updated@example.com\",\n  \"login\": \"joaosilva\",\n  \"senha\": \"novaSenha123\",\n  \"tipoUsuario\": {\n    \"id\": \"{{tipoUsuarioId}}\"\n  },\n  \"endereco\": {\n    \"rua\": \"Rua Secundária\",\n    \"numero\": \"456\",\n    \"cidade\": \"São Paulo\",\n    \"estado\": \"SP\",\n    \"cep\": \"01234-567\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar Usuário",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/usuarios/{{usuarioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuarios",
+                "{{usuarioId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Restaurantes",
+      "item": [
+        {
+          "name": "Criar Restaurante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Restaurante Italiana\",\n  \"endereco\": \"Rua das Flores, 789, São Paulo, SP\",\n  \"tipoCozinha\": \"Italiana\",\n  \"horarioFuncionamento\": \"11:00-23:00\",\n  \"dono\": {\n    \"id\": \"{{usuarioId}}\"\n  },\n  \"cardapio\": []\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/restaurantes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "restaurantes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obter Restaurante por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/restaurantes/{{restauranteId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "restaurantes",
+                "{{restauranteId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Restaurante",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{restauranteId}}\",\n  \"nome\": \"Restaurante Italiana Premium\",\n  \"endereco\": \"Rua das Flores, 789, São Paulo, SP\",\n  \"tipoCozinha\": \"Italiana\",\n  \"horarioFuncionamento\": \"12:00-00:00\",\n  \"dono\": {\n    \"id\": \"{{usuarioId}}\"\n  },\n  \"cardapio\": []\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/restaurantes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "restaurantes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar Restaurante",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/restaurantes/{{restauranteId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "restaurantes",
+                "{{restauranteId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cardápio",
+      "item": [
+        {
+          "name": "Criar Item no Cardápio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Pasta Carbonara\",\n  \"descricao\": \"Deliciosa pasta à carbonara com bacon e queijo parmesão\",\n  \"preco\": 45.90,\n  \"apenasNoLocal\": false,\n  \"restaurante\": \"{{restauranteId}}\",\n  \"caminhoFoto\": \"/fotos/pasta-carbonara.jpg\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/cardapios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "cardapios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obter Item do Cardápio por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/cardapios/{{cardapioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "cardapios",
+                "{{cardapioId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Item do Cardápio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{cardapioId}}\",\n  \"nome\": \"Pasta Carbonara Especial\",\n  \"descricao\": \"Deliciosa pasta à carbonara com bacon, queijo parmesão e ovos frescos\",\n  \"preco\": 52.90,\n  \"apenasNoLocal\": true,\n  \"restaurante\": {\n    \"id\": \"{{restauranteId}}\"\n  },\n  \"caminhoFoto\": \"/fotos/pasta-carbonara-especial.jpg\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/cardapios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "cardapios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar Item do Cardápio",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/cardapios/{{cardapioId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "cardapios",
+                "{{cardapioId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "tipoUsuarioId",
+      "value": ""
+    },
+    {
+      "key": "usuarioId",
+      "value": ""
+    },
+    {
+      "key": "restauranteId",
+      "value": ""
+    },
+    {
+      "key": "cardapioId",
+      "value": ""
+    }
+  ]
+}
