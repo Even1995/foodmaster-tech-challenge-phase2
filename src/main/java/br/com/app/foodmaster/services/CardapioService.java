@@ -3,8 +3,11 @@ package br.com.app.foodmaster.services;
 import br.com.app.foodmaster.dtos.AlterarCardapioDto;
 import br.com.app.foodmaster.dtos.SalvarCardapioDto;
 import br.com.app.foodmaster.entities.Cardapio;
+import br.com.app.foodmaster.entities.Restaurante;
 import br.com.app.foodmaster.exceptions.CardapioNaoEncontradoException;
+import br.com.app.foodmaster.exceptions.RestauranteNaoEncontradoException;
 import br.com.app.foodmaster.repositories.CardapioRepository;
+import br.com.app.foodmaster.repositories.RestauranteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -14,8 +17,11 @@ public class CardapioService {
 
     private final CardapioRepository cardapioRepository;
 
-    public CardapioService(CardapioRepository cardapioRepository) {
+    private final RestauranteRepository restauranteRepository;
+
+    public CardapioService(CardapioRepository cardapioRepository, RestauranteRepository restauranteRepository) {
         this.cardapioRepository = cardapioRepository;
+        this.restauranteRepository = restauranteRepository;
     }
 
     private Cardapio criarCardapio(SalvarCardapioDto input) {
@@ -25,6 +31,7 @@ public class CardapioService {
         cardapio.setPreco(input.preco());
         cardapio.setApenasNoLocal(input.apenasNoLocal());
         cardapio.setCaminhoFoto(input.caminhoFoto());
+        cardapio.setRestauranteId(restauranteRepository.findById(input.restaurante()).orElseThrow(() -> new RestauranteNaoEncontradoException(input.restaurante())));
 
         return cardapio;
     }

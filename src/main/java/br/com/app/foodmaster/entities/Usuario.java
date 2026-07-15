@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
 
@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
     private Endereco endereco;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tipo_usuario_id")
     private TipoUsuario tipoUsuario;
 

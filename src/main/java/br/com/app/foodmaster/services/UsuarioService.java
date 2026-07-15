@@ -6,6 +6,7 @@ import br.com.app.foodmaster.dtos.SalvarUsuarioDto;
 import br.com.app.foodmaster.entities.Endereco;
 import br.com.app.foodmaster.entities.Usuario;
 import br.com.app.foodmaster.exceptions.UsuarioNaoEncontradoException;
+import br.com.app.foodmaster.repositories.TipoUsuarioRepository;
 import br.com.app.foodmaster.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ import java.util.UUID;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final TipoUsuarioRepository tipoUsuarioRepository;;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, TipoUsuarioRepository tipoUsuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.tipoUsuarioRepository = tipoUsuarioRepository;
     }
 
     private Usuario criarUsuario(SalvarUsuarioDto input) {
@@ -26,7 +29,8 @@ public class UsuarioService {
         usuario.setEmail(input.email());
         usuario.setLogin(input.login());
         usuario.setSenha(input.senha());
-        usuario.setTipoUsuario(input.tipoUsuario());
+        usuario.setTipoUsuario(tipoUsuarioRepository.findById(input.tipoUsuario().getId())
+                .orElseThrow(() -> new RuntimeException("Tipo de usuário não encontrado")));
         usuario.setEndereco(criarEndereco(input.enderecoDto()));
         return usuario;
     }
@@ -36,7 +40,8 @@ public class UsuarioService {
         usuario.setEmail(input.email());
         usuario.setLogin(input.login());
         usuario.setSenha(input.senha());
-        usuario.setTipoUsuario(input.tipoUsuario());
+        usuario.setTipoUsuario(tipoUsuarioRepository.findById(input.tipoUsuario().getId())
+                .orElseThrow(() -> new RuntimeException("Tipo de usuário não encontrado")));
         usuario.setEndereco(criarEndereco(input.endereco()));
     }
 
